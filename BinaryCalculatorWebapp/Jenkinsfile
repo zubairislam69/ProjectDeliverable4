@@ -14,19 +14,19 @@ agent {
     kubernetes {
 	label 'sample-app'
       defaultContainer 'jnlp'
-      yaml 
+      yaml """
 apiVersion: v1
 kind: Pod
 metadata:
-labels:
-  component: ci
+  labels:
+    component: ci
 spec:
-  //Use service account that can deploy to all namespaces
+  # Use service account that can deploy to all namespaces
   serviceAccountName: cd-jenkins
   containers:
   - name: gcloud
     image: gcr.io/cloud-builders/gcloud
-    //image: google/cloud-sdk:latest
+    #image: google/cloud-sdk:latest
     command:
     - cat
     tty: true
@@ -35,6 +35,7 @@ spec:
     command:
     - cat
     tty: true
+"""
 
 }
   tools {
