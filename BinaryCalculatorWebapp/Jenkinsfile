@@ -22,7 +22,15 @@ pipeline {
     }
     stage ('Deploy') {
       steps {
-        sh 'echo "bye bye"'
+        container('kubectl') {
+          withCredentials([googleServiceAccount(credentialsId: ' 118049687092540086940', projectId: 'second-drake-379803')]) {
+            sh """
+	      gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+              /builder/kubectl apply -f ./YAML/binarycalculator-deployment.yaml --record
+              /builder/kubectl set image deployment/${APP_NAME} ${APP_NAME}=${IMAGE_TAG}:${BUILD_NUMBER} --record
+            """
+          }
+        }
       }
     }
   }
