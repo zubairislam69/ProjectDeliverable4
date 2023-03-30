@@ -7,12 +7,12 @@ pipeline {
     CLUSTER = "sofe3980u"
     CLUSTER_ZONE = "northamerica-northeast1-b"
     IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}"
-    JENKINS_CRED = "green-tract-379622"
+    JENKINS_CRED = "second-drake-379803"
   }
   
 agent {
     kubernetes {
-      label 'Built-In Node'
+      label 'sample-app'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
