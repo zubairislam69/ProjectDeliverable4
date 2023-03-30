@@ -21,7 +21,7 @@ metadata:
 labels:
   component: ci
 spec:
-  # Use service account that can deploy to all namespaces
+  //Use service account that can deploy to all namespaces
   serviceAccountName: cd-jenkins
   containers:
   - name: gcloud
@@ -60,7 +60,7 @@ spec:
     stage ('Deploy') {
       steps {
         container('kubectl') {
-          withCredentials([googleServiceAccount(credentialsId: '118049687092540086940', projectId: 'second-drake-379803')]) {
+          withCredentials([googleServiceAccount(credentialsId: JENKINS_CRED, projectId: PROJECT)]) {
             sh """
 	      gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
               /builder/kubectl apply -f ./YAML/binarycalculator-deployment.yaml --record
