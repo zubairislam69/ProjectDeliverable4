@@ -35,46 +35,46 @@ public class HelloAPIControllerTest {
     @Test
     public void helloAPINoParameter() throws Exception {
         this.mvc.perform(get("/helloAPI"))
-            .andExpect(status().isOk())
-			.andExpect(content().string("Hello World!"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("Hello World!"));
     }
-	
-	@Test
-	public void helloAPIWithName() throws Exception {
+
+    @Test
+    public void helloAPIWithName() throws Exception {
         this.mvc.perform(get("/helloAPI").param("name","John"))
-            .andExpect(status().isOk())
-			.andExpect(content().string("Hello John!"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("Hello John!"));
     }
-	
-	@Test
+
+    @Test
     public void EmailAPINoParameters() throws Exception {
         this.mvc.perform(get("/emailAPI"))
-            .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("John Doe"))
-			.andExpect(MockMvcResultMatchers.jsonPath("$.suggestedEmail").value("John.Doe@OntarioTechU.net"));
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("John Doe"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.suggestedEmail").value("John.Doe@OntarioTechU.net"));
     }
-	
-	@Test
+
+    @Test
     public void EmailAPIWithFirstName() throws Exception {
         this.mvc.perform(get("/emailAPI").param("fname","Jack"))
-            .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Jack Doe"))
-			.andExpect(MockMvcResultMatchers.jsonPath("$.suggestedEmail").value("Jack.Doe@OntarioTechU.net"));
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Jack Doe"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.suggestedEmail").value("Jack.Doe@OntarioTechU.net"));
     }
-	
-	@Test
+
+    @Test
     public void EmailAPIWithLastName() throws Exception {
         this.mvc.perform(get("/emailAPI").param("lname","Sparrow"))
-            .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("John Sparrow"))
-			.andExpect(MockMvcResultMatchers.jsonPath("$.suggestedEmail").value("John.Sparrow@OntarioTechU.net"));
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("John Sparrow"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.suggestedEmail").value("John.Sparrow@OntarioTechU.net"));
     }
-	
-	@Test
+
+    @Test
     public void EmailAPIWithFullName() throws Exception {
         this.mvc.perform(get("/emailAPI").param("fname","Jack").param("lname","Sparrow"))
-            .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Jack Sparrow"))
-			.andExpect(MockMvcResultMatchers.jsonPath("$.suggestedEmail").value("Jack.Sparrow@OntarioTechU.net"));
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Jack Sparrow"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.suggestedEmail").value("Jack.Sparrow@OntarioTechU.net"));
     }
 }
