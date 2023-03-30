@@ -12,7 +12,7 @@ pipeline {
   
 agent {
     kubernetes {
-	label 'binarycalculator-deployment-7bf7895c87-6rfjs'
+	label 'app=binarycalculator-deployment,pod-template-hash=7bf7895c87'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
