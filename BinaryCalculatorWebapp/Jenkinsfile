@@ -12,7 +12,7 @@ pipeline {
   
 agent {
     kubernetes {
-	label 'app=binarycalculator-deployment'
+	labelSelector: 'app=binarycalculator-deployment'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
