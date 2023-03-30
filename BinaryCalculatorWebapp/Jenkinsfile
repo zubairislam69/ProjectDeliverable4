@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    //PROJECT = "REPLACE_WITH_YOUR_PROJECT_ID"
+    ////PROJECT = "REPLACE_WITH_YOUR_PROJECT_ID"
 	PROJECT = "second-drake-379803"
     APP_NAME = "binary-calculator2"
 	//CLUSTER = "REPLACE_WITH_YOUR_CLUSTER_NAME"
