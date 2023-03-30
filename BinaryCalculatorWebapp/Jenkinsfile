@@ -37,6 +37,7 @@ spec:
     tty: true
 """
 }
+}
   }
   tools {
     maven 'maven' 
