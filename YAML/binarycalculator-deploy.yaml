@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: binarycalculator-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: binarycalc
+  template:
+    metadata:
+      labels:
+        app: binarycalc
+    spec:
+      containers:
+        - image: gcr.io/projectdeliverable3/binarycalculator
+          name: binarycalc
+          ports:
+            - containerPort: 8080
+              name: binarycalc
